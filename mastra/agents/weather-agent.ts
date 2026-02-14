@@ -4,6 +4,7 @@ import { LibSQLStore } from "@mastra/libsql";
 import { weatherTool } from "@/mastra/tools/weather-tool";
 
 export const weatherAgent = new Agent({
+  id: "weather-agent",
   name: "Weather Agent",
   instructions: `
       あなたは、日本語で正確な気象情報を提供し、天気をもとにしたアクティビティーの計画を手助けしてくれるお天気アシスタントです。
@@ -24,6 +25,7 @@ export const weatherAgent = new Agent({
 
   memory: new Memory({
     storage: new LibSQLStore({
+      id: "weather-agent-storage",
       url: "file:../mastra.db", // path is relative to the .mastra/output directory
     }),
   }),
