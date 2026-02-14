@@ -7,6 +7,7 @@ import { weatherAgent } from "./agents/weather-agent";
 export const mastra = new Mastra({
   agents: { weatherAgent },
   storage: new LibSQLStore({
+    id: "mastra-storage",
     // stores observability, scores, ... into memory storage, if it needs to persist, change to file:../mastra.db
     url: ":memory:",
   }),
@@ -14,8 +15,4 @@ export const mastra = new Mastra({
     name: "Mastra",
     level: "info",
   }),
-  observability: {
-    // AIトレース用のDefaultExporterとCloudExporterを有効にする
-    default: { enabled: true },
-  },
 });
